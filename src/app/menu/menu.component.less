@@ -1,0 +1,73 @@
+//COLORS
+@menuBackgroundColor: #3c3c3c;
+@menuTextColor: #939393;
+@menuTextHoverColor: rgba(255 ,255 ,255 , 0.5);
+@menuTextSelectedColor: #ffffff;
+@menuListElementHoverColor: rgba(255, 255, 255, 0.1);
+
+.menu-tablet {
+    width: 48px !important;
+}
+
+.menu-hover {
+    width: 220px !important;
+}
+
+.menu {
+    width: 220px;
+    height: 100vh;
+    background-color: @menuBackgroundColor;
+    overflow: auto;
+    float: left;
+    position: fixed;
+    transition: all .3s;
+    z-index: 2;
+    .menu-container {
+        display: block;
+        position: relative;
+    }
+    .menu-img {
+        width: 63px;
+        height: 77px;
+        display: block;
+        margin: 28px auto 34px;
+    }
+    .menu-button {
+        display: block;
+        margin: 0 auto 42px;
+    }
+    .menu-list {
+        color: @menuTextColor;
+        .menu-element {
+            padding: 0 12px;
+            height: 48px;
+            width: 100%;
+            text-align: left;
+            line-height: 48px;
+            display: inline-block;
+            cursor: pointer;
+            &:hover {
+                background-color: @menuListElementHoverColor;
+                color: @menuTextHoverColor;
+            }
+            .menu-icon {
+                width: 24px;
+                height: 24px;
+                position: relative;
+                top: 6px;
+                line-height: 48px;
+                color: @menuTextColor;
+                margin-right: 12px;
+                display: inline-block;
+            }
+
+            .menu-text {
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+        .active {
+            color: @menuTextSelectedColor;
+        }
+    }
+}

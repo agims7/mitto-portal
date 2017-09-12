@@ -1,0 +1,72 @@
+<div class="cart-container" [ngClass]="{'cart-container-smaller': selectionEnable }">
+    <h1 class="cart-title">Koszyk</h1>
+    <div class="cart-content">
+        <div class="container">
+            <table>
+                <tr class="cart-table-head-row">
+                    <th class="row-element">
+                        <label class="control control-checkbox" [for]="selectEverything">                      <input type="checkbox" [id]="selectEverything" name="selectAll" [(ngModel)]="selectEverything" (ngModelChange)="changeSelection()">
+                            <div class="control_indicator"></div>
+                        </label>
+                    </th>
+                    <th class="row-element">Rodzaj</th>
+                    <th class="row-element align-center">Ilość</th>
+                    <th class="row-element">Nadawca</th>
+                    <th class="row-element">Odbiorca</th>
+                    <th class="row-element">Przewoźnik</th>
+                    <th class="row-element">Cena</th>
+                    <th class="row-element"></th>
+                    <th class="row-element"></th>
+                    <th class="row-element"></th>
+
+                </tr>
+                <tr *ngFor="let order of orderService.ordersList; let i = index" class="cart-table-row" [ngClass]="{ 'highlight-row': order.selected }">
+                    <td class="row-element">
+                        <label class="control control-checkbox" [for]="order.orderNumber">
+                            <input type="checkbox" [id]="order.orderNumber" name="order.orderNumber" [(ngModel)]="order.selected" (ngModelChange)="checkSelection()">
+                            <div class="control_indicator"></div>
+                        </label>
+                    </td>
+                    <td class="row-element">{{order.packageType}}</td>
+                    <td class="row-element align-center">{{order.numberOfPackages}}</td>
+                    <td class="row-element">
+                        <p *ngIf="selectedIndex !== i">{{order.senderPostalCode}} {{order.senderCity }}</p>
+                        <div *ngIf="selectedIndex === i">
+                            <p>{{order.senderCompanyName}}</p>
+                            <p>{{order.senderNameAndSurname}}</p>
+                            <p>{{order.senderAddress}}</p>
+                            <p>{{order.senderPostalCode}} {{order.senderCity}}</p>
+                            <p>{{order.senderTelephone}}</p>
+                            <p>{{order.senderEmail}}</p>
+                        </div>
+                    </td>
+                    <td class="row-element">
+                            <p *ngIf="selectedIndex !== i">{{order.recipientPostalCode}} {{order.recipientCity }}</p>
+                            <div *ngIf="selectedIndex === i">
+                                <p>{{order.recipientCompanyName}}</p>
+                                <p>{{order.recipientNameAndSurname}}</p>
+                                <p>{{order.recipientAddress}}</p>
+                                <p>{{order.recipientPostalCode}} {{order.recipientCity}}</p>
+                                <p>{{order.recipientTelephone}}</p>
+                                <p>{{order.recipientEmail}}</p>
+                            </div>
+                        </td>
+                    <td class="row-element">{{order.carrierSelected}}</td>
+                    <td class="row-element">{{order.finalGrossPrice}}</td>
+                    <td class="row-element remove-element" (click)="deleteOrder(i)">Usuń</td>
+                    <td class="row-element pay-element" [routerLink]="['/portal/order-accepted']">Zapłać</td>
+                    <td class="row-element">
+                        <i class="fa" [ngClass]="{'fa-chevron-down': selectedIndex !== i, 'fa-chevron-up': selectedIndex === i}" (click)="showMore(i)"></i>
+                    </td>
+
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div class="bottom-bar" [ngClass]="{'bottom-bar-hidden': !selectionEnable }">
+    <button class="bottom-bar-button-left button button-transparent" (click)="deleteGroupOfOrders()">Usuń</button>
+    <button class="bottom-bar-button-right button button-normal" [routerLink]="['/portal/order-accepted']">Zapłać</button>
+  </div>

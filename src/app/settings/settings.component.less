@@ -1,0 +1,99 @@
+//COLORS
+@settingsTextColor: #333333;
+@settingsOrangeText: #de5628;
+@settingsGreenColor: #0c5f53;
+@settingsRadioButtonColor: #535353;
+
+.settings-container {
+    padding: 37px 48px;
+    height: calc(~"100vh - 88px");
+    overflow: auto;
+    .settings-title {
+        font-size: 36px;
+        font-weight: 300;
+        text-align: left;
+        color:  @settingsTextColor;
+    }
+    .settings-content {
+        margin-top: 36px;
+        .left-container,
+        .right-container {
+            width: calc(~"50% - 24px")
+        }
+        .left-container {
+            margin-right: 48px;
+        }
+    }
+    .settings-login-data-text,
+    .settings-login-address-text,
+    .settings-preferences-text,
+    .settings-medal {
+        font-size: 24px;
+        font-weight: 300;
+        text-align: left;
+        margin-bottom: 24px;
+    }
+    .settings-password-change {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.9px;
+        text-align: left;
+        color: @settingsOrangeText;
+        margin: 14px 0 28px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+    .settings-preferences-paragraph {
+        font-size: 14px;
+        font-weight: 600;
+        text-align: left;
+        color: @settingsGreenColor;
+        margin-bottom: 16px;
+    }
+    .settings-default {
+        margin-bottom: 31px;
+        position: relative;
+        
+      input[type="radio"] {
+        position: relative;
+        left: -5px;
+        margin-right: 5px;
+        width: 20px;
+        height:20px;
+        outline:none;
+        background:rgba(0, 0, 0, 0.3);
+        border-radius:50%;
+        cursor:pointer;
+        background: @settingsRadioButtonColor;
+        
+        &:hover,
+        &:checked {
+          background:rgba(0, 0, 0, 0.5);
+        }
+        
+        &:checked {
+          background:@settingsGreenColor;
+        } 
+      }
+        label {
+        position: relative;
+        top: -5px;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: left;
+        color: @settingsGreenColor;
+        cursor:pointer;
+        }
+        .first-label {
+          margin-right: 36px;
+        }
+      }
+      
+      
+    .settings-medal-container {
+        img {
+            margin-right: 14px;
+        }
+    }
+}

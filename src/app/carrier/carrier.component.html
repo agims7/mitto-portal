@@ -1,0 +1,73 @@
+<div class="carrier-container">
+  <h1 class="carrier-title">Nadaj przesyłkę - przewoźnik</h1>
+  <div class="carrier-content">
+    <div class="top-container">
+
+      <div *ngFor="let carrier of carriersService.carriers; let i = index" class="carrier-block-container">
+        <div [class]="carrier.mainClass" [ngClass]="{'carrierNotAvailable': !carrier.carrierAvailable }" (click)="selectCarrier(carrier.name, i)">
+          <div class="fill-space" [ngClass]="{'highlight': carrier.clicked }">
+            <div *ngIf="carrier.carrierAvailable" class="carrier-selected">
+              <img class="carrier-selected-icon" src="../assets/img/icon-selected.svg" alt="Selected icon">
+            </div>
+            <div class="carrier-logo">
+              <img *ngIf="carrier.carrierAvailable; else elsePart" [src]="carrier.iconSrcEnable" alt="Carrier logo">
+              <!-- <img *ngIf="!carrier.carrierAvailable" [src]="carrier.iconSrcDisabled" alt="Carrier logo"> -->
+              <ng-template #elsePart>
+                  <img [src]="carrier.iconSrcDisabled" alt="Carrier logo">
+              </ng-template>
+            </div>
+            <div *ngIf="carrier.carrierAvailable" class="carrier-price">
+              <p class="first-price">{{ carrier.netPrice }} zł</p>
+              <p class="second-price">{{ carrier.grossPrice }} zł <span class="gross-price">brutto</span></p>
+            </div>
+            <div [ngClass]="{'hr-margin-top': !carrier.carrierAvailable }" class="hr-small"></div>
+            <div class="estimaded-delivery">
+              <p *ngIf="carrier.carrierAvailable" class="estimated-delivery-text">Szacowane doręczenie</p>
+              <p *ngIf="carrier.carrierAvailable" class="estimated-delivery-time">{{ carrier.estimatedDeliveryTime }}</p>
+              <p *ngIf="!carrier.carrierAvailable" class="carrier-not-available">Przewoźnik niedostępny dla tej usługi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-container">
+      <div *ngIf="!carrierClickedForButton" class="carrier-additional-services-container">
+        <h3 class="carrier-additional-services-text">Usługi dodatkowe</h3>
+        <ul class="carrier-additional-services-list">
+          <li *ngIf="carriersService.carriers[parcelService.carrierIndex].additionalService === undefined" class="carrier-additional-services-element">
+            <span class="no-services">Brak dodatkowych usług dla tego przewoźnika</span>
+          </li>
+
+          <li *ngFor="let service of carriersService.carriers[parcelService.carrierIndex].additionalService; let i = index" class="carrier-additional-services-element">
+            <label class="control control-checkbox" [for]="service.text">{{ service.text }}
+              <input type="checkbox" [id]="service.text" [(ngModel)]="service.isSelected" (ngModelChange)="calculateFinalPrice(parcelService.carrierIndex, i)">
+              <div class="control_indicator"></div>
+            </label>
+            <div *ngIf="service.additionalBox && service.isSelected" class="fieldset cash-on-delivery-content">
+                <div class="field-row">
+                  <div class="field-text">Kwota pobrania</div>
+                  <div class="small-input">
+                    <input type="number" [(ngModel)]="carriersService.cashOnDeliveryValue" placeholder="Kwota pobrania (zł)">
+                  </div>
+                </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="bottom-bar">
+  <div class="dots-container">
+    <ul class="dots">
+      <li class="dot dot-first dot-active"></li>
+      <li class="dot dot-second dot-active"></li>
+      <li class="dot dot-third"></li>
+    </ul>
+  </div>
+  <button class="bottom-bar-button-left button button-transparent" [routerLink]="['/portal/package-details']">Wróc</button>
+  <button [disabled]="carrierClickedForButton" class="bottom-bar-button-right button button-normal"  (click)="submitCarrierView()">Dalej</button>
+</div>

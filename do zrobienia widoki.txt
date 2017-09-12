@@ -1,0 +1,3 @@
+- Page not found
+
+- ikonki svg w formie w ktorej mozna zmieniac color w css

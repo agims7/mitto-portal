@@ -1,0 +1,28 @@
+<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+  <div class="login-container">
+    <div class="left-container-static">
+      <div class="padding-container">
+        <h1 class="title-login">Zaloguj</h1>
+        <p *ngIf="userlogin.invalid && userlogin.touched || userpassword.invalid && userpassword.touched" class="invalid-form absolut-alert">Zaznaczone pola formularza zawierają błędy. Popraw je, aby kontynuować.</p>
+        <p class="error">
+          <span class="email">Podany adres email nie jest zarejestrowany.</span>
+          <span class="password">Błędne hasło.</span>
+        </p>
+        <div class="login-form">
+          <input type="email" class="input-standard-full-width" id="userlogin" required name="userlogin" [(ngModel)]="userLogin" #userlogin="ngModel" placeholder="Twój email" autocomplete="off" email>
+          <input type="password" class="input-standard-full-width" id="userpassword" required name="userpassword" [(ngModel)]="userPassword" #userpassword="ngModel" placeholder="Hasło" autocomplete="off">
+          <a [routerLink]="['/remind']" class="password-forget">Nie pamiętam hasła</a>
+          <div class="buttons-container">
+            <button class="button button-transparent" [routerLink]="['/register']">Zarejestruj</button>
+            <button type="submit" [disabled]="!loginForm.form.valid" class="button button-normal" [routerLink]="['/portal']">Zaloguj</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="right-container-static">
+      <img src="../assets/img/background-welcome.svg" alt="Background image">
+    </div>
+  </div>
+</form>

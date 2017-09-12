@@ -1,0 +1,101 @@
+<form (ngSubmit)="onSubmit()" #settingsForm="ngForm">
+  <div class="settings-container">
+    <h1 class="settings-title">Ustawienia konta</h1>
+    <p *ngIf="email.invalid && email.touched || name.invalid && name.touched || surname.invalid && surname.touched || streetandnumber.invalid && streetandnumber.touched || postalcode.invalid && postalcode.touched || city.invalid && city.touched || phone.invalid && phone.touched" class="invalid-form">Zaznaczone pola formularza zawierają błędy. Popraw je, aby kontynuować.</p>
+    <div class="settings-content">
+      <div class="left-container">
+        <div class="settings-login-data">
+          <h3 class="settings-login-data-text">Dane logowania</h3>
+          <div class="fieldset">
+            <div class="field-row">
+              <div class="field-text">
+                  <label for="email">Email</label>
+              </div>
+              <div class="field-element">
+                <input type="email" id="email" required name="email" [(ngModel)]="appService.emailAddress" #email="ngModel" placeholder="Twój email" email>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text"></div>
+              <div class="field-element">
+                <a class="settings-password-change" [routerLink]="['/portal/password']">Zmień hasło</a>
+              </div>
+            </div>
+          </div>
+          <div class="settings-address-data">
+            <h3 class="settings-login-address-text">Dane adresowe</h3>
+            <div class="fieldset">
+              <div class="field-row">
+                <div class="field-text">
+                    <label for="name">Imię</label>
+                </div>
+                <div class="field-element">
+                  <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" id="name" required name="name" [(ngModel)]="appService.userName" #name="ngModel" placeholder="Twoję imię">
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field-text">
+                    <label for="surname">Nazwisko</label>
+                </div>
+                <div class="field-element">
+                  <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" id="surname" required name="surname" [(ngModel)]="appService.userSurname" #surname="ngModel" placeholder="Twoje nazwisko">
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field-text">
+                    <label for="streetandnumber">Ulica i numer</label>
+                </div>
+                <div class="field-element">
+                  <textarea id="streetandnumber" required name="streetandnumber" [(ngModel)]="appService.streetAndNumber" #streetandnumber="ngModel" placeholder="Twój adres"></textarea>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field-text">
+                    <label>Kod i miasto</label>
+                </div>
+                <div class="field-element small-field">
+                  <input type="text" id="postalcode" required name="postalcode" [(ngModel)]="appService.postalCode" #postalcode="ngModel" placeholder="__-___">
+                </div>
+                <div class="field-element medium-field">
+                  <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" id="city" required name="city" [(ngModel)]="appService.cityName" #city="ngModel" placeholder="Miasto">
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field-text">
+                    <label for="phone">Telefon</label>
+                </div>
+                <div class="field-element">
+                  <input type="text" pattern="[0-9]*" minlength="9" maxlength="15" id="phone" required name="phone" [(ngModel)]="appService.phoneNumber" #phone="ngModel" placeholder="Twój numer">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-container">
+        <div class="settings-preferences-data">
+          <h3 class="settings-preferences-text">Preferencje wysyłki</h3>
+          <p class="settings-preferences-paragraph">Domyślnie wybieraj wysyłkę</p>
+          <div class="settings-default">
+            <input type="radio" [(ngModel)]="defaultPreference" name="defaultPreference" id="preferenceFastest" value="preferenceFastest" #preferenceFastest="ngModel">
+            <label class="first-label" for="preferenceFastest">Najtańszą</label>
+            <input type="radio" [(ngModel)]="defaultPreference" name="defaultPreference" id="preferenceCheapest" value="preferenceCheapest" #preferenceCheapest="ngModel">
+            <label class="second-label" for="preferenceCheapest">Najszybszą</label>
+          </div>
+          <h3 class="settings-medal">Medal</h3>
+          <div class="settings-medal-container">
+            <img src="../assets/img/icon-bronze-medal.svg" alt="Medal image">
+            <img src="../assets/img/icon-silver-medal.svg" alt="Medal image">
+            <img src="../assets/img/icon-gold-medal.svg" alt="Medal image">
+            <img src="../assets/img/icon-platinum-medal.svg" alt="Medal image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <button type="submit" [disabled]="!settingsForm.form.valid" class="bottom-bar-button-right button button-normal">Zapisz</button>
+  </div>
+</form>

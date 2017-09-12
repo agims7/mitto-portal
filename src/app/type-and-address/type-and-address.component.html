@@ -1,0 +1,256 @@
+<form (ngSubmit)="onSubmit()" #typeAndAddressForm="ngForm">
+  <div class="typeandaddress-container">
+    <h1 class="typeandaddress-title">Nadaj przesyłkę - rodzaj i adresy</h1>
+
+    <p *ngIf="parcelType.invalid && parcelType.touched || parcelNumber.invalid && parcelNumber.touched || totalValue.invalid && totalValue.touched || senderCountry.invalid && senderCountry.touched || senderNameAndSurname.invalid && senderNameAndSurname.touched || senderAddress.invalid && senderAddress.touched || senderCity.invalid && senderCity.touched || senderTelephone.invalid && senderTelephone.touched || senderEmail.invalid && senderEmail.touched || recipientCountry.invalid && recipientCountry.touched || recipientNameAndSurname.invalid && recipientNameAndSurname.touched || recipientAddress.invalid && recipientAddress.touched || recipientPostalCode.invalid && recipientPostalCode.touched || recipientCity.invalid && recipientCity.touched || recipientTelephone.invalid && recipientTelephone.touched || recipientEmail.invalid && recipientEmail.touched" class="invalid-form">Zaznaczone pola formularza zawierają błędy. Popraw je, aby kontynuować.</p>
+
+    <div class="typeandaddress-content">
+      <div class="top-container">
+        <div class="typeandaddress-parcel-container">
+          <div class="typeandaddress-parcel-option">
+            <img class="typeandaddress-parcel-option-icon" src="../assets/img/icon-single.svg" alt="Icon single">
+            <p class="typeandaddress-parcel-option-text">Wysyłka detaliczna</p>
+          </div>
+          <div class="typeandaddress-parcel-settings">
+            <div class="parcel-types">
+              <div class="parcel-type">
+                <input [(ngModel)]="parcelService.packageType" type="radio" name="parcelType" id="parcel" value="parcel" #parcelType="ngModel"
+                  required>
+                <label class="first-label" for="parcel">
+                  <img class="parcel-type-icon" src="../assets/img/package.svg" alt="parcel icon">
+                Paczka
+              </label>
+              </div>
+              <div class="parcel-type">
+                <input [(ngModel)]="parcelService.packageType" type="radio" name="parcelType" id="palette" value="palette" #parcelType="ngModel"
+                  required>
+                <label class="second-label" for="palette">
+                  <img class="parcel-type-icon" src="../assets/img/pallete.svg" alt="parcel icon">
+                Paleta
+              </label>
+              </div>
+              <div class="parcel-type">
+                <input [(ngModel)]="parcelService.packageType" type="radio" name="parcelType" id="letter" value="letter" #parcelType="ngModel"
+                  required>
+                <label class="third-label" for="letter">
+                  <img class="parcel-type-icon" src="../assets/img/letter.svg" alt="parcel icon">
+                List
+              </label>
+              </div>
+            </div>
+            <div class="vr"></div>
+            <ul class="parcel-properties">
+              <li class="parcel-property">
+                <p class="parcel-property-text">Ilość wysyłek</p>
+                <select class="parcel-number" [(ngModel)]="parcelService.numberOfPackages" id="parcelNumber" name="parcelNumber" #parcelNumber="ngModel" required>
+                    <option *ngFor="let number of range" [value]="number">{{ number }}</option>
+                </select>
+              </li>
+              <li class="parcel-property">
+                <p *ngIf="parcelService.packageType === 'parcel'" class="parcel-property-text">Waga paczki</p>
+                <p *ngIf="parcelService.packageType === 'palette'" class="parcel-property-text">Waga palety</p>
+                <input type="number" min="0" [(ngModel)]="parcelService.parcelWeight
+              " id="parcelWeight" required name="parcelWeight" #parcelWeight="ngModel"> kg
+              </li>
+              <li class="parcel-property" *ngIf="parcelService.packageType === 'parcel'">
+                <p class="parcel-property-text">Wymiary</p>
+                      <input type="number" min="0" [(ngModel)]="parcelService.parcelLength" id="parcelLength" required name="parcelLength" #parcelLength="ngModel"
+                      title="długość"> x <input type="number" min="0" [(ngModel)]="parcelService.parcelWidth" id="parcelWidth"
+                      required name="parcelWidth" #parcelWidth="ngModel" title="szerokość"> x <input type="number" min="0" [(ngModel)]="parcelService.parcelHeight"
+                      id="parcelHeight" required name="parcelHeight" #parcelHeight="ngModel" title="wysokość" required> cm
+              </li>
+              <li class="parcel-property" *ngIf="parcelService.packageType === 'palette'">
+                  <p class="parcel-property-text">Wymiary</p>
+                    <select class="palette-size" [(ngModel)]="parcelService.paletteSize" id="paletteSize" name="paletteSize" #paletteSize="ngModel" required>
+                        <option *ngFor="let size of sizeRange" [value]="size">{{ size }}</option>
+                    </select>
+                </li>
+              <li class="parcel-property">
+                  <p class="parcel-property-text">Wartość</p>
+                  <input type="number" min="0" [(ngModel)]="parcelService.totalValue
+                " id="totalValue" required name="totalValue" #totalValue="ngModel"> zł
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="left-container">
+        <div class="typeandaddress-sender-address-container">
+          <h3 class="typeandaddress-sender-address">Adres nadawcy</h3>
+          <div class="fieldset">
+            <div class="field-row saved-address">
+              <div class="field-text">Zapisany adres</div>
+              <div class="field-element">
+                <select [(ngModel)]="senderSelectedAddress" name="addresses" (ngModelChange)="setSenderFromAddresses()">
+                    <option *ngFor="let address of addresses" [value]="address" >{{ address }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Kraj</div>
+              <div class="field-element">
+                <select [(ngModel)]="parcelService.senderCountry" id="senderCountry" required name="senderCountry" #senderCountry="ngModel">
+                  <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Firma
+                <p class="subscript">Opcjonalnie</p>
+              </div>
+              <div class="field-element">
+                <input type="text" [(ngModel)]="parcelService.senderCompanyName" id="senderCompanyName" name="senderCompanyName" #senderCompanyName="ngModel"
+                  placeholder="Twoja firma">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Imię i nazwisko</div>
+              <div class="field-element">
+                <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="parcelService.senderNameAndSurname" placeholder="Twoje Imię i Nazwisko" id="senderNameAndSurname"
+                  required name="senderNameAndSurname" #senderNameAndSurname="ngModel">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Ulica i numer
+                <p class="subscript">Oraz dodatkowe dane adresowe</p>
+              </div>
+              <div class="field-element">
+                <textarea [(ngModel)]="parcelService.senderAddress" placeholder="Twój adres" id="senderAddress" required name="senderAddress"
+                  #senderAddress="ngModel"></textarea>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Kod i miasto</div>
+              <div class="field-element small-field">
+                <input type="text" [(ngModel)]="parcelService.senderPostalCode" placeholder="__-___" id="senderPostalCode" required name="senderPostalCode"
+                  #senderPostalCode="ngModel">
+              </div>
+              <div class="field-element medium-field">
+                <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="parcelService.senderCity" placeholder="Miasto" id="senderCity" required name="senderCity"
+                  #senderCity="ngModel">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Telefon
+                <p class="subscript">Tylko cyfry</p>
+              </div>
+              <div class="field-element">
+                <input type="text" pattern="[0-9]*" minlength="9" maxlength="15" [(ngModel)]="parcelService.senderTelephone" placeholder="Twój numer" id="senderTelephone" required name="senderTelephone"
+                  #senderTelephone="ngModel">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Email</div>
+              <div class="field-element">
+                <input type="email" [(ngModel)]="parcelService.senderEmail" placeholder="Twój email" id="senderEmail" required name="senderEmail"
+                  #senderEmail="ngModel" email>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="typeandaddress-additional-information">Dodatkowe informacje</h3>
+          <div class="fieldset">
+            <div class="field-row">
+              <div class="field-text">Komentarz
+                <p class="subscript">Dodatkowy komentarz dla przewoźnika</p>
+              </div>
+              <div class="field-element">
+                <textarea [(ngModel)]="parcelService.senderComment" class="textarea-bigger" placeholder="Twój komentarz" id="senderComment"
+                  name="senderComment" #senderComment="ngModel"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-container">
+        <div class="typeandaddress-
+      recipient-address-container">
+          <h3 class="typeandaddress-recipient-address">Adres nadawcy</h3>
+          <div class="fieldset">
+            <div class="field-row saved-address">
+              <div class="field-text">Zapisany adres</div>
+              <div class="field-element">
+                <select [(ngModel)]="recipientSelectedAddress" name="addresses" (ngModelChange)="setRecipientFromAddresses()">
+                    <option *ngFor="let address of addresses" [value]="address" >{{ address }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Kraj</div>
+              <div class="field-element">
+                <select [(ngModel)]="parcelService.recipientCountry" id="recipientCountry" required name="recipientCountry" #recipientCountry="ngModel">
+                  <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Firma
+                <p class="subscript">Opcjonalnie</p>
+              </div>
+              <div class="field-element">
+                <input type="text" [(ngModel)]="parcelService.recipientCompanyName" placeholder="Firma odbiorcy" id="recipientCompanyName"
+                  name="recipientCompanyName" #recipientCompanyName="ngModel">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Imię i nazwisko</div>
+              <div class="field-element">
+                <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="parcelService.recipientNameAndSurname" placeholder="Imię i Nazwisko odbiorcy" id="recipientNameAndSurname"
+                  required name="recipientNameAndSurname" #recipientNameAndSurname="ngModel">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Ulica i numer
+                <p class="subscript">Oraz dodatkowe dane adresowe</p>
+              </div>
+              <div class="field-element">
+                <textarea [(ngModel)]="parcelService.recipientAddress" placeholder="Adres odbiorcy" id="recipientAddress" required name="recipientAddress"
+                  #recipientAddress="ngModel"></textarea>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Kod i miasto</div>
+              <div class="field-element small-field">
+                <input type="text" [(ngModel)]="parcelService.recipientPostalCode" placeholder="__-___" id="recipientPostalCode" required
+                  name="recipientPostalCode" #recipientPostalCode="ngModel">
+              </div>
+              <div class="field-element medium-field">
+                <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="parcelService.recipientCity" placeholder="Miasto" id="recipientCity" required name="recipientCity"
+                  #recipientCity="ngModel">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Telefon
+                <p class="subscript">Tylko cyfry</p>
+              </div>
+              <div class="field-element">
+                <input type="text" pattern="[0-9]*" minlength="9" maxlength="15" [(ngModel)]="parcelService.recipientTelephone" placeholder="Numer odbiorcy" id="recipientTelephone" required
+                  name="recipientTelephone" #recipientTelephone="ngModel">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field-text">Email</div>
+              <div class="field-element">
+                <input type="email" [(ngModel)]="parcelService.recipientEmail" placeholder="Email odbiorcy" id="recipientEmail" required
+                  name="recipientEmail" #recipientEmail="ngModel" email>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="dots-container">
+      <ul class="dots">
+        <li class="dot dot-first dot-active"></li>
+        <li class="dot dot-second"></li>
+        <li class="dot dot-third"></li>
+      </ul>
+    </div>
+    <button class="bottom-bar-button-left button button-transparent" [routerLink]="['/portal/settings']">Anuluj</button>
+    <button type="submit" [disabled]="!typeAndAddressForm.form.valid" class="bottom-bar-button-right button button-normal">Dalej</button>
+  </div>

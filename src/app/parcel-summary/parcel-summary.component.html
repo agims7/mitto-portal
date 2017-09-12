@@ -1,0 +1,118 @@
+<div class="parcelsummary-container">
+  <h1 class="parcelsummary-title">Ustawienia konta</h1>
+  <div class="parcelsummary-content">
+    <div class="top-container">
+      <div class="parcelsummary-standard-block">
+        <h1 class="parcelsummary-block-title">Przesyłka</h1>
+        <div class="parcelsummary-block-container parcel-details">
+          <img class="package-icon" src="../assets/img/package.svg" alt="Package icon">
+          <ul class="package-details-list">
+            <li class="package-list-element">
+              <span *ngIf="parcelService.packageType === 'parcel'">Paczka</span>
+              <span *ngIf="parcelService.packageType === 'palette'">Paleta</span>
+            </li>
+            <li class="package-list-element"><span class="bold-text">{{ parcelService.numberOfPackages }}szt.</span> / {{ parcelService.parcelWeight }}kg</li>
+            <li *ngIf="parcelService.packageType === 'parcel'" class="package-list-element">{{ parcelService.parcelLength }}cm / {{ parcelService.parcelWidth }}cm / {{ parcelService.parcelHeight }}cm</li>
+            <li *ngIf="parcelService.packageType === 'palette'" class="package-list-element">{{ parcelService.paletteSize }}</li>
+          </ul>
+          <a class="change-package-details" [routerLink]="['/portal/package-details']">Zmień przesyłkę</a>
+        </div>
+      </div>
+
+      <div class="parcelsummary-standard-block">
+        <h1 class="parcelsummary-block-title">Adres nadawcy</h1>
+        <div class="parcelsummary-block-container sender-address">
+          <ul class="sender-details-list">
+            <li [ngClass]="{'hidden': parcelService.senderCompanyName}" class="sender-list-element bold-text">{{ parcelService.senderCompanyName }}</li>
+            <li class="sender-list-element bold-text">{{ parcelService.senderNameAndSurname }}</li>
+            <li class="sender-list-element">{{ parcelService.senderAddress }}</li>
+            <li class="sender-list-element">{{ parcelService.senderPostalCode }}, {{ parcelService.senderCity }}</li>
+            <li class="sender-list-element">{{ parcelService.senderCountry }}</li>
+            <li class="sender-list-element">{{ parcelService.senderTelephone }}</li>
+            <li class="sender-list-element">{{ parcelService.senderEmail }}</li>
+          </ul>
+          <a class="change-sender-details" [routerLink]="['/portal/package-details']">Zmień nadawcę</a>
+        </div>
+      </div>
+
+      <div class="parcelsummary-standard-block">
+        <h1 class="parcelsummary-block-title">Adres odbiorcy</h1>
+        <div class="parcelsummary-block-container recipient-address">
+          <ul class="recipient-details-list">
+            <li [ngClass]="{'hidden': parcelService.recipientCompanyName}" class="recipient-list-element bold-text">{{ parcelService.recipientCompanyName }}</li>
+            <li class="recipient-list-element bold-text">{{ parcelService.recipientNameAndSurname }}</li>
+            <li class="recipient-list-element">{{ parcelService.recipientAddress }}</li>
+            <li class="recipient-list-element">{{ parcelService.recipientPostalCode }}, {{ parcelService.recipientCity }}</li>
+            <li class="recipient-list-element">{{ parcelService.recipientCountry }}</li>
+            <li class="recipient-list-element">{{ parcelService.recipientTelephone }}</li>
+            <li class="recipient-list-element">{{ parcelService.recipientEmail }}</li>
+          </ul>
+          <a class="change-recipient-details" [routerLink]="['/portal/package-details']">Zmień nadawcę</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-container">
+      <div class="parcelsummary-standard-block">
+        <h1 class="parcelsummary-block-title">Dostawca</h1>
+        <div class="parcelsummary-block-container provider">
+          <div class="provider-icon-container" [ngClass]="carriersService.carriers[parcelService.carrierIndex].name">
+            <img class="package-icon" [src]="carriersService.carriers[parcelService.carrierIndex].iconSrcEnable" alt="Provider icon">
+          </div>
+          <ul class="provider-details-list">
+              
+              <li *ngFor="let service of carriersService.carriers[parcelService.carrierIndex].additionalService" class="provider-list-element">
+                  <span *ngIf="service.isSelected">
+                      <i class="fa fa-check"></i> {{ service.text }}
+                  </span>
+                </li>
+          </ul>
+          <a class="change-provider-details" [routerLink]="['/portal/carrier']">Zmień dostawcę</a>
+        </div>
+      </div>
+
+      <div class="parcelsummary-big-block">
+        <h1 class="parcelsummary-block-title">Faktura</h1>
+        <div class="parcelsummary-block-container invoice">
+          <div class="invoice-container">
+            <div class="invoice-line-container">
+              <p class="invoice-title">Cena za przesyłkę</p>
+              <div class="invoice-content-container">
+                <p class="invoice-content-element">{{ parcelService.finalSingleNetPrice }} zł netto</p>
+                <p class="invoice-content-element">{{ parcelService.finalSingleGrossPrice }} zł brutto</p>
+              </div>
+            </div>
+            <div class="invoice-line-container">
+              <p class="invoice-title">Ilość przesyłek</p>
+              <div class="invoice-content-container">
+                <p class="invoice-content-element">{{ parcelService.numberOfPackages }}</p>
+              </div>
+            </div>
+            <div class="hr"></div>
+            <div class="invoice-line-container">
+              <p class="invoice-title">Cena łączna</p>
+              <div class="invoice-content-container">
+                <p class="invoice-content-element">{{ parcelService.finalNetPrice }} zł netto</p>
+                <p class="invoice-content-element">{{ (parcelService.finalGrossPrice) }} zł brutto</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <div class="dots-container">
+    <ul class="dots">
+      <li class="dot dot-first dot-active"></li>
+      <li class="dot dot-second dot-active"></li>
+      <li class="dot dot-third dot-active"></li>
+    </ul>
+  </div>
+  <button class="bottom-bar-button-left-left button button-transparent" [routerLink]="['/portal/carrier']">Wróc</button>
+  <button class="bottom-bar-button-left button button-transparent" (click)="createOrder()">Do koszyka</button>
+  <button class="bottom-bar-button-right button button-normal" (click)="finalizeOrder()">Zapłać i zamów</button>
+</div>

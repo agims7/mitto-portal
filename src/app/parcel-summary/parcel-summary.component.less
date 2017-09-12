@@ -1,0 +1,203 @@
+//COLORS
+@parcelsummaryTextColor: #333333;
+@parcelsummaryOrangeColor: #de5628;
+@parcelsummaryGreenColor: #0c5f53;
+@parcelsummaryGreyBacgroundColor: #eaf0ef;
+@parcelsummaryYellowCarriersColor: #f9c623;
+@parcelsummaryDarkCarriersColor: #351c15;
+@parcelsummaryRedCarriersColor: #de1c32;
+
+.hidden {
+    visibility: hidden;
+}
+
+.parcelsummary-container {
+    padding: 37px 48px;
+    height: calc(~"100vh - 88px");
+    overflow: auto;
+    .parcelsummary-title {
+        font-size: 36px;
+        font-weight: 300;
+        text-align: left;
+        color:  @parcelsummaryTextColor;
+    }
+    .parcelsummary-content {
+        margin-top: 36px;
+        width: 1024px;
+        .bold-text {
+            font-weight: 600;
+        }
+        .parcelsummary-block-title {
+            font-size: 24px;
+            font-weight: 300;
+            text-align: left;
+            color: @parcelsummaryTextColor;
+            margin-bottom: 24px;
+        }
+        .parcelsummary-standard-block {
+            width: 33%;
+            min-height: 200px;
+            display: inline-block;
+            float: left;
+            margin-bottom: 30px;
+            .parcel-details {
+                .package-icon {
+                    display: inline-block;
+                    margin-right: 17px;
+                }
+                .package-details-list {
+                    display: inline-block;
+                    position: relative;
+                    top: -10px;
+                    .package-list-element {
+                        font-size: 14px;
+                        text-align: left;
+                        color: @parcelsummaryTextColor;
+                        line-height: 1.57;
+                    }
+                }
+                .change-package-details {
+                    font-size: 12px;
+                    font-weight: 600;
+                    letter-spacing: 0.9px;
+                    text-align: left;
+                    color: @parcelsummaryOrangeColor;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    margin-top: 16px;
+                    display: block;
+                    cursor: pointer;
+                }
+            }
+            .sender-address {
+                .sender-details-list {
+                    .sender-list-element {
+                        font-size: 14px;
+                        line-height: 1.57;
+                        text-align: left;
+                        color: @parcelsummaryTextColor;
+                    }
+                }
+                .change-sender-details {
+                    font-size: 12px;
+                    font-weight: 600;
+                    letter-spacing: 0.9px;
+                    text-align: left;
+                    color: @parcelsummaryOrangeColor;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    margin-top: 16px;
+                    display: block;
+                }
+            }
+            .recipient-address {
+                .recipient-details-list {
+                    .recipient-list-element {
+                        font-size: 14px;
+                        line-height: 1.57;
+                        text-align: left;
+                        color: @parcelsummaryTextColor;
+                    }
+                }
+                .change-recipient-details {
+                    font-size: 12px;
+                    font-weight: 600;
+                    letter-spacing: 0.9px;
+                    text-align: left;
+                    color: @parcelsummaryOrangeColor;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    margin-top: 16px;
+                    display: block;
+                }
+            }
+            .provider {
+                .provider-icon-container {
+                    width: 202px;
+                    height: 77px;
+                    border-radius: 5px;
+                    position: relative;
+                    .package-icon {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+                .inpost,
+                .dhl {
+                    background-color: @parcelsummaryYellowCarriersColor !important;
+                }
+                .ups {
+                    background-color: @parcelsummaryDarkCarriersColor !important;
+                }
+                .patron {
+                    background-color: @parcelsummaryRedCarriersColor !important;
+                }
+                .provider-details-list {
+                    margin-top: 12px;
+                    .provider-list-element {
+                        font-size: 14px;
+                        line-height: 1.57;
+                        text-align: left;
+                        color: @parcelsummaryTextColor;
+                        .fa {
+                            margin-right: 17px;
+                        }
+                    }
+                }
+                .change-provider-details {
+                    font-size: 12px;
+                    font-weight: 600;
+                    letter-spacing: 0.9px;
+                    text-align: left;
+                    color: @parcelsummaryOrangeColor;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    margin-top: 16px;
+                    display: block;
+                }
+            }
+        }
+        .parcelsummary-big-block {
+            width: 66%;
+            display: inline-block;
+            margin-bottom: 30px;
+            .invoice {
+                border-radius: 5px;
+                background-color: @parcelsummaryGreyBacgroundColor;
+                .invoice-container {
+                    padding: 16px;
+                    .hr {
+                        margin: 16px 8px;
+                        width: calc(~"100% - 16px");
+                        background-color: rgba(12, 95, 83, 0.3) !important;
+                    }
+                    .invoice-line-container {
+                        width: 100%;
+                        display: block;
+                        margin: 8px 8px;
+                        .invoice-title {
+                            font-size: 16px;
+                            font-weight: 600;
+                            line-height: 1.5;
+                            text-align: left;
+                            color: @parcelsummaryGreenColor;
+                            display: inline-block;
+                            width: 33%;
+                        }
+                        .invoice-content-container {
+                            display: inline-block;
+                            width: 66%;
+                            position: relative;
+                            .invoice-content-element {
+                                display: inline-block;;
+                                width: 49%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

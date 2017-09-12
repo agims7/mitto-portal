@@ -1,0 +1,18 @@
+<div class="menu" [ngClass]="{ 'menu-tablet': appService.mobileView, 'menu-hover': appService.mobileViewHoverClass }" (mouseenter)="appService.mobileViewHoverClass = true" (mouseleave)="appService.mobileViewHoverClass = false">
+  <div class="menu-container">
+    <img [ngClass]="{ 'hidden': appService.mobileView && !appService.mobileViewHoverClass }" class="menu-img" src="../assets/img/logo-orange-on-dark.svg" alt="Logo">
+    <button [ngClass]="{ 'hidden': appService.mobileView && !appService.mobileViewHoverClass }" class="menu-button button button-normal" [routerLink]="['/portal/package-details']">Nadaj przesyłkę</button>
+    <ul class="menu-list">
+          <li *ngFor="let element of menuList; let i = index" class="menu-element" [routerLink]="[element.routerLink]" [routerLinkActive]="element.routerLinkActive" (mouseenter)="hoverOn(i)" (mouseleave)="hoverOut(i)" (click)="activateElement(element)">
+
+            <img *ngIf="!element.hoverState && !element.activeState" class="menu-icon" [src]="element.imgUrl" alt="Icon">
+
+            <img *ngIf="element.hoverState" class="menu-icon" [src]="element.imgUrlHover" alt="Icon">
+
+            <img *ngIf="!element.hoverState && element.activeState" class="menu-icon" [src]="element.imgUrlSelected" alt="Icon">
+
+            <span *ngIf="!appService.mobileView || appService.mobileViewHoverClass" class="menu-text">{{ element.text }}</span>
+          </li>
+    </ul>
+  </div>
+</div>

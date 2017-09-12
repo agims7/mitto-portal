@@ -1,0 +1,187 @@
+//COLORS
+@typeandaddressTextColor: #333333;
+@typeandaddressBackgroundSecondColor: #eaf0ef;
+@typeandaddressGreenColor: #0c5f53;
+@typeandaddressRadioButtonColor: #535353;
+@typeandaddressBackgroundWhite: #ffffff;
+@typeandaddressBorderInputs: #cccccc;
+
+//BREAKPOINT
+@tabletBreakpoint: 1025px;
+@mobileBreakpoint: 830px;
+
+.typeandaddress-container {
+    padding: 37px 48px;
+    height: calc(~"100vh - 88px");
+    overflow: auto;
+    .typeandaddress-title {
+        font-size: 36px;
+        font-weight: 300;
+        text-align: left;
+        color:  @typeandaddressTextColor;
+    }
+    .typeandaddress-content {
+        margin-top: 36px;
+        .top-container {
+            min-height: 240px;
+            margin-bottom: 36px;
+        }
+        .left-container,
+        .right-container {
+            width: calc(~"50% - 24px")
+        }
+        .left-container {
+            margin-right: 48px;
+        }
+    }
+    .typeandaddress-parcel-container {
+        display: flex;
+        @media all and (max-width: @tabletBreakpoint) {
+            display: block;
+        }
+        .typeandaddress-parcel-option {
+            width: 241px;
+            height: 48px;
+            border-radius: 5px 0 0 5px;
+            background-color: @typeandaddressBackgroundSecondColor;
+            display: flex;
+            align-items: center;
+            @media all and (max-width: @mobileBreakpoint) {
+                border-radius: 5px 5px 0 0;
+            }
+            .typeandaddress-parcel-option-icon {
+                width: 36px;
+                height: 36px;
+                object-fit: contain;
+                margin: 6px 8px 6px 12px;
+            }
+            .typeandaddress-parcel-option-text {
+                font-size: 14px;
+                font-weight: 600;
+                color: @typeandaddressTextColor;
+            }
+        }
+        .typeandaddress-parcel-settings {
+            width: 100%;
+            min-height: 240px;
+            border-radius: 0 5px 5px 5px;
+            background-color: @typeandaddressBackgroundSecondColor;
+            display: flex;
+            @media all and (max-width: @mobileBreakpoint) {
+                display: block;
+                border-radius: 0 5px 0 0;
+            }
+            .parcel-types {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: calc(~"100% - 90px");
+                margin: 45px 25px;
+                width: 177px;
+                @media all and (max-width: @tabletBreakpoint) {
+                    height: 150px;
+                }
+                @media all and (max-width: @mobileBreakpoint) {
+                    height: 175px;
+                    margin: 0px 25px;
+                    padding-top: 25px;
+                }
+                .parcel-type-icon {
+                    position: absolute;
+                    bottom: -25px;
+                    left: -80px;
+                }
+            }
+            .parcel-properties {
+                display: flex;
+                flex-direction: column;
+                margin: 45px 25px;
+                width: calc(~'100% - 326px');
+                .parcel-property {
+                    position: relative;
+                    margin-bottom: 12px;
+                    .parcel-number {
+                        text-indent: 15px;
+                    }
+                    .parcel-property-text {
+                        display: inline-block;
+                        font-size: 14px;
+                        font-weight: 600;
+                        text-align: left;
+                        color: @typeandaddressGreenColor;
+                        width: 93px;
+                        margin-right: 12px;
+                    }
+                    .palette-size {
+                        width: 70%;
+                    }
+                    input,
+                    select {
+                        display: inline-block;
+                        font-size: 14px;
+                        text-align: center;
+                        color: @typeandaddressTextColor;
+                        width: 64px;
+                        height: 32px;
+                        border-radius: 2px;
+                        background-color: @typeandaddressBackgroundWhite;
+                        border: solid 1px @typeandaddressBorderInputs;
+                    }
+                }
+            }
+
+
+            input[type="radio"] {
+                position: relative;
+                left: -5px;
+                margin-right: 5px;
+                width: 20px;
+                height:20px;
+                outline:none;
+                background:rgba(0, 0, 0, 0.3);
+                border-radius:50%;
+                cursor:pointer;
+                background: @typeandaddressRadioButtonColor;
+                
+                &:hover,
+                &:checked {
+                  background:rgba(0, 0, 0, 0.5);
+                }
+                
+                &:checked {
+                  background:@typeandaddressGreenColor;
+                } 
+              }
+            label {
+                position: relative;
+                top: -5px;
+                margin-left: 80px;
+                font-size: 14px;
+                font-weight: 600;
+                text-align: left;
+                color: @typeandaddressGreenColor;
+                cursor:pointer;
+            }
+            .vr {
+                // @media all and (max-width: @mobileBreakpoint) {
+                //     display: none;
+                // }
+            }
+        }
+    }
+
+    .typeandaddress-sender-address,
+    .typeandaddress-additional-information,
+    .typeandaddress-recipient-address {
+        font-size: 24px;
+        font-weight: 300;
+        text-align: left;
+        margin-bottom: 24px;
+        .saved-address {
+            margin-bottom: 32px;
+        }
+    }
+    .typeandaddress-additional-information {
+        margin-top: 36px;
+    }
+}

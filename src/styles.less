@@ -1,0 +1,466 @@
+//COLORS
+@backgroundColor: #3c3c3c;
+@orangeMainColor: #de5628;
+@orangeHoverColor: #c54123;
+@orangePressedColor: #ab421e;
+@orangeDisabledColor: #e8dcd8;
+@buttonTransparentMainColor: rgba(255, 255, 255, 0.01);
+@buttonTransparentHoverColor: #ffeae1;
+@buttonTransparentPressedColor: #ffddd1;
+@buttonTransparentDisabledColor: rgba(255, 255, 255, 0.01);
+@buttonTransparentDisabledBorderColor: #e5ddd8;
+@disabledFontColor: #b3917d;
+@whiteColor: #ffffff;
+@borderGreyColor: #cccccc;
+@inputBorderHoverColor: #41a38e;
+@inputBorderErrorColor: #d01802;
+@inputSecondTextColor: #0c5f53;
+@bottomBarColor: #eaf0ef;
+@horizontalLineColor: #ebebeb;
+@invalidFormTextColor: #d01802;
+@invalidFormInputColor: #d03701;
+@subscriptTextColor: #666666;
+
+//BREAKPOINT
+@tabletBreakpoint: 1025px;
+@mobileBreakpoint: 830px;
+
+// FONTS
+
+* {
+    box-sizing: border-box;
+    outline: none;
+    font-family: "Segoe UI";
+}
+
+// DEFAULTS
+body {
+    background-color: @backgroundColor;
+}
+
+a {
+    text-decoration: none;
+}
+
+textarea {
+    resize: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+// TOPOLOGY
+.top-container {
+    width: 100%;
+    display: block;
+    position: relative;
+}
+.bottom-container {
+    width: 100%;
+    display: block;
+    position: relative;
+}
+.left-container {
+    width: 50%;
+    height: 100%;
+    float: left;
+    display: inline-block;
+    position: relative;
+    @media all and (max-width: @mobileBreakpoint) {
+        width: 100% !important;
+    }
+}
+.left-container-static {
+    width: 50%;
+    height: 100%;
+    float: left;
+    display: inline-block;
+    position: relative;
+}
+.right-container {
+    width: 50%;
+    height: 100%;
+    float: right;
+    display: inline-block;
+    position: relative;
+    @media all and (max-width: @mobileBreakpoint) {
+        width: 100% !important;
+    }
+}
+.right-container-static {
+    width: 50%;
+    height: 100%;
+    float: right;
+    display: inline-block;
+    position: relative;
+}
+.bottom-bar {
+    width: 100%;
+    position: relative;
+    height: 88px;
+    background-color: @bottomBarColor;
+    .dots-container {
+        position: absolute;
+        left: 48px;
+        top: 38px;
+        .dots {
+            position: relative;
+            .dot {
+                display: inline-block;
+                margin-right: 16px;
+                width: 12px;
+                height: 12px;
+                border: 1px solid @inputSecondTextColor;
+                border-radius: 100%;
+                background-color: transparent;
+            }
+            .dot-active {
+                background-color: @inputSecondTextColor;
+            }
+        }
+    }
+    .bottom-bar-button-left-left {
+        position: absolute;
+        right: 402px;
+        top: 24px;
+    }
+    .bottom-bar-button-left {
+        position: absolute;
+        right: 224px;
+        top: 24px;
+    }
+    .bottom-bar-button-right {
+        position: absolute;
+        right: 46px;
+        top: 24px;
+    }
+}
+.bottom-bar-hidden {
+    display: none;
+}
+.vr {
+    height: calc(~"100% - 48px");
+    margin: 24px;
+    width: 1px;
+    background-color: rgba(12, 95, 83, 0.3);
+}
+
+.vr-small {
+    height: calc(~"100% - 32px");
+    margin: 16px;
+    width: 1px;
+    background-color: rgba(12, 95, 83, 0.3);
+}
+
+.hr {
+    height: 1px;
+    margin: 24px;
+    width: calc(~"100% - 48px");
+    background-color: @horizontalLineColor;
+}
+
+.hr-small {
+    height: 1px;
+    margin: 12px 16px 8px;
+    width: calc(~"100% - 32px");
+    background-color: @horizontalLineColor;
+}
+
+// BUTTONS
+.button {
+    width: 152px;
+    height: 40px;
+    border: solid 1px;
+    border-radius: 4px;
+    text-transform: uppercase; 
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.9px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button-wide {
+    width: 190px;
+}
+
+.button-transparent {
+    background-color: @buttonTransparentMainColor;
+    color: @orangeMainColor;
+    border-color: @orangeMainColor;
+    &:hover,
+    &:focus {
+        background-color: @buttonTransparentHoverColor;
+        border: none;
+        border: 1px solid @orangeMainColor;
+        border-radius: 4px;
+    }
+    &:active {
+        background-color: @buttonTransparentPressedColor;
+        border: none;
+        border: 1px solid @orangeMainColor;
+        border-radius: 4px;
+    }
+    &:disabled {
+        background-color: @buttonTransparentDisabledColor;
+        border: none;
+        border: 1px solid @buttonTransparentDisabledBorderColor;
+        border-radius: 4px;
+        color: @disabledFontColor;
+    }
+}
+
+.button-normal {
+    background-color: @orangeMainColor;
+    color: @whiteColor;
+    border: none;
+    &:hover,
+    &:focus {
+        background-color: @orangeHoverColor;
+        border: none;
+        color: @whiteColor;
+    }
+    &:active {
+        background-color: @orangePressedColor;
+        border: none;
+        color: @whiteColor;
+    }
+    &:disabled {
+        background-color: @orangeDisabledColor;
+        color: @disabledFontColor;
+        border: none;
+    }
+}
+
+// INPUTS
+input,
+select {
+    height: 32px;
+    border-radius: 2px;
+    background-color: @whiteColor;
+    border: solid 1px @borderGreyColor;
+    &:hover {
+        border: solid 1px @inputBorderHoverColor;
+    }
+    &:focus,
+    &:active {
+        border: solid 2px @inputBorderHoverColor;
+    }
+}
+textarea {
+    height: 56px;
+    border-radius: 2px;
+    background-color: @whiteColor;
+    border: solid 1px @borderGreyColor;
+    &:hover {
+        border: solid 1px @inputBorderHoverColor;
+    }
+    &:focus,
+    &:active {
+        border: solid 2px @inputBorderHoverColor;
+    }
+}
+
+.textarea-bigger {
+    height: 108px;
+}
+
+.input-standard-full-width {
+    width: 100%;
+}
+
+.input-standard-half-width-first {
+    width: calc(~"50% - 9px");
+    display: inline-block;
+}
+
+.input-standard-half-width-second {
+    width: calc(~"50% - 8px");
+    display: inline-block;
+}
+
+// INPUTS CHECKBOXES
+.control {
+    display: block;
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 12px;
+    padding-top: 0px;
+    cursor: pointer;
+    font-size: 14px;
+    input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+    .control_indicator {
+        position: absolute;
+        top: 0px;
+        left: 0;
+        height: 19px;
+        width: 19px;
+        background: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        &:after {
+            box-sizing: unset;
+            content: '';
+            position: absolute;
+            display: none;
+        }
+    }
+    &:hover input ~ .control_indicator,
+    input:focus ~ .control_indicator {
+        background: @whiteColor;
+        border-color: @inputSecondTextColor;
+    }
+    input:checked ~ .control_indicator {
+        background: @whiteColor;
+        border-color: rgba(0, 0, 0, 0.3);
+    }
+    &:hover input:not([disabled]):checked ~ .control_indicator,
+    input:checked:focus ~ .control_indicator {
+        background: @whiteColor;
+        border-color: rgba(0, 0, 0, 0.3);
+    }
+    &:hover input:not([disabled]):checked ~ .control_indicator,
+    input:checked:focus ~ .control_indicator {
+        background: @whiteColor;
+        border-color: rgba(0, 0, 0, 0.3);
+    }
+    input:checked ~ .control_indicator:after {
+        display: block;
+    }
+}
+.control-checkbox .control_indicator:after {
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    border: solid @inputSecondTextColor;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+// .control-radio .control_indicator {
+//     border-radius: 1px;
+// }
+
+// .control:hover input ~ .control_indicator,
+// .control input:focus ~ .control_indicator {
+//     background: @whiteColor;
+//     border-color: @inputSecondTextColor;
+// }
+
+// .control input:checked ~ .control_indicator {
+//     background: @whiteColor;
+//     border-color: rgba(0, 0, 0, 0.3);
+// }
+// .control:hover input:not([disabled]):checked ~ .control_indicator,
+// .control input:checked:focus ~ .control_indicator {
+//     background: @whiteColor;
+//     border-color: rgba(0, 0, 0, 0.3);
+// }
+// .control_indicator:after {
+//     box-sizing: unset;
+//     content: '';
+//     position: absolute;
+//     display: none;
+// }
+// .control input:checked ~ .control_indicator:after {
+//     display: block;
+// }
+// .control-checkbox .control_indicator:after {
+//     left: 5px;
+//     top: 1px;
+//     width: 5px;
+//     height: 9px;
+//     border: solid @inputSecondTextColor;
+//     border-width: 0 2px 2px 0;
+//     transform: rotate(45deg);
+// }
+
+// FORMS
+
+.invalid-form {
+    font-size: 14px;
+    text-align: left;
+    font-weight: 600;
+    color: @invalidFormTextColor;
+    margin-top: 12px;
+}
+
+.absolut-alert {
+    position: absolute;
+}
+
+input.ng-touched.ng-invalid,
+textarea.ng-touched.ng-invalid,
+select.ng-touched.ng-invalid {
+    border: solid 2px @invalidFormInputColor;
+}
+
+// FIELDSET
+.fieldset {
+    display: table;
+    border-collapse: separate; 
+    border-spacing: 0 12px;
+    table-layout: fixed;
+    word-wrap: break-word;
+    width: 100%;
+    .field-row {
+        display: table-row;
+        margin: 6px 0;
+        position: relative;
+        input,
+        textarea,
+        select {
+            padding: 7px 3px 7px 7px;
+        }
+        .field-text,
+        .field-element {
+            display: table-cell;
+            position: relative;
+            vertical-align: middle;
+            input,
+            textarea,
+            select {
+                width: 100%;
+            }
+            .subscript {
+                min-height: 14px;
+                max-width: 110px;
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 1.2;
+                letter-spacing: 0.5px;
+                text-align: left;
+                color: @subscriptTextColor;
+                margin-top: 5px;
+            }
+        }
+
+        .field-text {
+            width: 136px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: left;
+            color: @inputSecondTextColor;
+        }
+        .field-element {
+            width: calc(~"100% - 136px");
+        }
+        .small-field {
+            width: calc(~"25% - 4px");
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .medium-field {
+            width: calc(~"75% - 4px");
+            display: inline-block
+        }
+        .small-input {
+            width: 136px;
+        }
+    }
+}

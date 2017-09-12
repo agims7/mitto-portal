@@ -1,0 +1,98 @@
+//COLORS
+@ordersTextColor: #333333;
+@ordersTableHeadBackgroundColor:  #edf0f0;
+@ordersTableYellowBackgroundColor: #fffed9;
+@ordersGreenColor: #0c5f53;
+@ordersOrangeColor: #de5628;
+
+.orders-container-smaller {
+    height: calc(~"100vh - 88px") !important;
+}
+
+.orders-container {
+    height: 100vh;
+    position: relative;
+    overflow: auto;
+    transition: all .3s;
+    transition-timing-function: ease-in-out;
+    .orders-title {
+        padding: 37px 48px;
+        font-size: 36px;
+        font-weight: 300;
+        text-align: left;
+        color:  @ordersTextColor;
+    }
+    .orders-content {
+        margin-top: 36px;
+        .container {
+            width: 100%;
+            table {
+                width: 100%;
+                text-align: left;
+                font-size: 14px;
+                .orders-table-head-row {
+                    height: 48px;
+                    line-height: 48px;
+                    color: @ordersGreenColor;
+                    font-weight: 600;
+                    background-color: @ordersTableHeadBackgroundColor;
+                    th:first-child {
+                        padding-left: 52px;
+                        width: 18px;
+                        input {
+                            display: none;
+                        }
+                        .control {
+                            padding-left: 42px;
+                        }
+                    }
+                    th:last-child {
+                        padding-right: 12px;
+                    }
+                    th:nth-child(7) {
+                        width: 140px;
+                    }
+                }
+                .orders-table-row {
+                    color: @ordersTextColor;
+                    line-height: 1.57;
+                    td:first-child {
+                        padding-left: 52px;
+                        width: 18px;
+                        input {
+                            display: none;
+                        }
+                        .control {
+                            padding-left: 42px;
+                        }
+                    }
+                    td:last-child {
+                        padding-right: 12px;
+                    }
+                    td:nth-child(7) {
+                        width: 140px;
+                    }
+
+                    .row-element {
+                        height: 48px;
+                        padding-top: 14px;
+                        .fa {
+                            cursor: pointer;
+                        }
+                    }
+                    .print-label {
+                        font-size: 12px;
+                        font-weight: 600;
+                        letter-spacing: 0.9px;
+                        color: @ordersOrangeColor;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                    }
+                }
+                .highlight-row {
+                    background-color: @ordersTableYellowBackgroundColor;
+                }
+            }
+        }
+    }
+}

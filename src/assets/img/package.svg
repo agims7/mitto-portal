@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>368FFFD0-35A3-4619-B1D6-1FCE5E3E642C</title>
+    <desc>Created with sketchtool.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon-/-Package-/-Normal">
+            <rect id="Rectangle" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="64" height="64"></rect>
+            <g id="Group-8" transform="translate(7.000000, 6.000000)" stroke="#14332B">
+                <path d="M0,14.0032996 C0,13.4491925 0.392690301,12.795801 0.889763236,12.5373231 L24.1102368,0.462676883 C24.6016394,0.207147496 25.3926903,0.204198956 25.8897632,0.462676883 L49.1102368,12.5373231 C49.6016394,12.7928525 50,13.4512787 50,14.0032996 L50,37.9967004 C50,38.5508075 49.6073097,39.204199 49.1102368,39.4626769 L25.8897632,51.5373231 C25.3983606,51.7928525 24.6073097,51.795801 24.1102368,51.5373231 L0.889763236,39.4626769 C0.39836057,39.2071475 0,38.5487213 0,37.9967004 L0,14.0032996 Z" id="Path-2" stroke-width="4" fill="#54D2B6"></path>
+                <polyline id="Path-2-Copy" stroke-width="4" points="50 13 25 26 0 13"></polyline>
+                <path d="M38,6 L13,19" id="Path-2-Copy-4" stroke-width="2"></path>
+                <path d="M25,26 L25,52" id="Path-3" stroke-width="4"></path>
+                <path d="M12,20 L12,46" id="Path-3-Copy-2" stroke-width="2"></path>
+                <path d="M38,19 L38,45" id="Path-3-Copy-3" stroke-width="2"></path>
+                <path d="M12.1213445,5.77178422 L36.8786555,19.2282158" id="Path-2-Copy-5" stroke-width="2" fill="#54D2B6"></path>
+            </g>
+        </g>
+    </g>
+</svg>

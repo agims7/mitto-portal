@@ -1,0 +1,29 @@
+//COLORS
+@orderacceptedTextColor: #333333;
+
+.order-accepted-container {
+    padding: 37px 48px;
+    height: 100vh;
+    position: relative;
+    overflow: auto;
+    .order-accepted-title {
+        font-size: 36px;
+        font-weight: 300;
+        text-align: left;
+        color:  @orderacceptedTextColor;
+    }
+    .order-accepted-content {
+        margin-top: 36px;
+        .container {
+            // width: calc(~"100% - 48px");
+            max-width: 648px;
+            .order-accepted-text {
+                font-size: 14px;
+                line-height: 1.57;
+                text-align: left;
+                color:  @orderacceptedTextColor;
+                margin-bottom: 24px;
+            }
+        }
+    }
+}

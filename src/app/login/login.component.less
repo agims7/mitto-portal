@@ -1,0 +1,60 @@
+//COLORS
+@loginBackgroundColor: #f9fcfb;
+@loginTextColor: #333333;
+@loginForgetPasswordColor: #666666;
+@loginErrorColor: #d01802;
+
+.login-container {
+    display: block;
+    position: absolute;
+    width: 804px;
+    height: 544px;
+    background-color: @loginBackgroundColor;
+    box-shadow: 0 2px 30px 0 rgba(0, 0, 0, 0.5);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .padding-container {
+        position: relative;
+        padding: 26px 36px;
+        .title-login {
+            font-size: 36px;
+            font-weight: 300;
+            text-align: left;
+            color: @loginTextColor;
+        }
+        .error {
+            margin-top: 47px;
+            margin-bottom: 12px;
+            color: @loginErrorColor;
+            font-size: 14px;
+            text-align: left;
+            line-height: 18px;
+            .email {
+                visibility: hidden;
+            }
+            .password {
+                visibility: hidden;
+            }
+        }
+        .login-form {
+            position: relative;
+            input {
+                margin-bottom: 12px;
+                padding: 6px 8px;
+                font-size: 14px;
+                color: @loginTextColor;
+            }
+            .password-forget {
+                font-size: 14px;
+                color: @loginForgetPasswordColor;
+            }
+            .buttons-container {
+                margin-top: 48px;
+                button:first-of-type {
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+}

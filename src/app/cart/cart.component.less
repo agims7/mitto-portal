@@ -1,0 +1,109 @@
+//COLORS
+@cartTextColor: #333333;
+@cartTableHeadBackgroundColor:  #edf0f0;
+@cartTableYellowBackgroundColor: #fffed9;
+@cartGreenColor: #0c5f53;
+@cartOrangeColor: #de5628;
+
+.cart-container-smaller {
+    height: calc(~"100vh - 88px") !important;
+}
+
+.cart-container {
+    height: 100vh;
+    position: relative;
+    overflow: auto;
+    transition: all .3s;
+    transition-timing-function: ease-in-out;
+    .cart-title {
+        padding: 37px 48px;
+        font-size: 36px;
+        font-weight: 300;
+        text-align: left;
+        color:  @cartTextColor;
+    }
+    .cart-content {
+        margin-top: 36px;
+        .container {
+            width: 100%;
+            table {
+                width: 100%;
+                text-align: left;
+                font-size: 14px;
+                .cart-table-head-row {
+                    height: 48px;
+                    line-height: 48px;
+                    color: @cartGreenColor;
+                    font-weight: 600;
+                    background-color: @cartTableHeadBackgroundColor;
+                    th:first-child {
+                        padding-left: 52px;
+                        width: 18px;
+                        input {
+                            display: none;
+                        }
+                        .control {
+                            padding-left: 42px;
+                        }
+                    }
+                    th:last-child {
+                        padding-right: 12px;
+                    }
+                    th:nth-child(8) {
+                        width: 60px;
+                    }
+                    th:nth-child(9),
+                    th:nth-child(10) {
+                        width: 70px;
+                    }
+                }
+                .cart-table-row {
+                    color: @cartTextColor;
+                    line-height: 1.57;
+                    td:first-child {
+                        padding-left: 52px;
+                        width: 18px;
+                        input {
+                            display: none;
+                        }
+                        .control {
+                            padding-left: 42px;
+                        }
+                    }
+                    td:last-child {
+                        padding-right: 12px;
+                    }
+                    td:nth-child(8) {
+                        width: 60px;
+                    }
+                    td:nth-child(9),
+                    td:nth-child(10) {
+                        width: 70px;
+                    }
+                    .row-element {
+                        height: 48px;
+                        padding-top: 14px;
+                        .fa {
+                            cursor: pointer;
+                        }
+                    }
+                    .align-center {
+                        text-align: center;
+                    }
+                    .remove-element,
+                    .pay-element {
+                        font-size: 12px;
+                        font-weight: 600;
+                        letter-spacing: 0.9px;
+                        color: @cartOrangeColor;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                    }
+                }
+                .highlight-row {
+                    background-color: @cartTableYellowBackgroundColor;
+                }
+            }
+        }
+    }
+}

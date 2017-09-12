@@ -1,0 +1,50 @@
+<div class="order-container" [ngClass]="{'order-container-smaller': selectionEnable }">
+    <div>
+        <div class="order-title-container">
+            <img class="order-back-icon" src="../assets/img/icon-back.svg" alt="Back" (click)="navigateBack()">
+            <div class="order-text-container">
+                <h1 class="order-title">Zlecenie {{ selectedOrderNumber }}</h1>
+                <p class="order-date">{{ order.orderDate }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="order-content">
+        <div class="container">
+            <table>
+                <tr class="order-table-head-row">
+                    <th class="row-element">
+                        <label class="control control-checkbox" [for]="selectEverything">                      <input type="checkbox" [id]="selectEverything" name="selectAll" [(ngModel)]="selectEverything" (ngModelChange)="changeSelection()">
+                          <div class="control_indicator"></div>
+                      </label>
+                    </th>
+                    <th class="row-element">Nr</th>
+                    <th class="row-element">Data</th>
+                    <th class="row-element">Rodzaj</th>
+                    <th class="row-element">Ilość</th>
+                    <th class="row-element">Kwota</th>
+                    <th class="row-element"></th>
+
+                </tr>
+                <tr class="order-table-row" [ngClass]="{ 'highlight-row': order.selected }">
+                    <td class="row-element">
+                        <label class="control control-checkbox" [for]="order.orderNumber">
+                          <input type="checkbox" [id]="order.orderNumber" name="order.orderNumber" [(ngModel)]="order.selected" (ngModelChange)="checkSelection()">
+                          <div class="control_indicator"></div>
+                      </label>
+                    </td>
+                    <td class="row-element">{{order.orderNumber}}</td>
+                    <td class="row-element">{{order.orderDate}}</td>
+                    <td class="row-element">{{order.packageType}}</td>
+                    <td class="row-element">{{order.numberOfPackages}}</td>
+                    <td class="row-element">{{order.finalGrossPrice}}</td>
+                    <td class="row-element print-label" (click)="printLabel()">Drukuj etykietę</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div class="bottom-bar" [ngClass]="{'bottom-bar-hidden': !selectionEnable }">
+    <button class="bottom-bar-button-right button button-normal">Drukuj etykiety</button>
+</div>

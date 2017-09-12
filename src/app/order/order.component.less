@@ -1,0 +1,121 @@
+//COLORS
+@orderTextColor: #333333;
+@orderTableHeadBackgroundColor:  #edf0f0;
+@orderTableYellowBackgroundColor: #fffed9;
+@orderGreenColor: #0c5f53;
+@orderOrangeColor: #de5628;
+
+.order-container-smaller {
+    height: calc(~"100vh - 88px") !important;
+}
+
+.order-container {
+    height: 100vh;
+    position: relative;
+    overflow: auto;
+    transition: all .3s;
+    transition-timing-function: ease-in-out;
+    .order-title-container {
+        position: relative;
+        padding: 37px 48px 0px;
+        .order-back-icon {
+            float: left;
+            position: relative;
+            top: 5px;
+            cursor: pointer;
+        }
+        .order-text-container {
+            display: inline-block;
+            position: relative;
+            left: 8px;
+            .order-title {
+                padding-bottom: 8px;
+                font-size: 36px;
+                font-weight: 300;
+                text-align: left;
+                color: @orderTextColor;
+            }
+            .order-date {
+                padding-bottom: 16px;
+                font-size: 14px;
+                line-height: 1.57;
+                font-weight: 400;
+                text-align: left;
+                color: @orderTextColor;
+            }
+        }
+    }
+    .order-content {
+        margin-top: 36px;
+        .container {
+            width: 100%;
+            table {
+                width: 100%;
+                text-align: left;
+                font-size: 14px;
+                .order-table-head-row {
+                    height: 48px;
+                    line-height: 48px;
+                    color: @orderGreenColor;
+                    font-weight: 600;
+                    background-color: @orderTableHeadBackgroundColor;
+                    th:first-child {
+                        padding-left: 52px;
+                        width: 18px;
+                        input {
+                            display: none;
+                        }
+                        .control {
+                            padding-left: 42px;
+                        }
+                    }
+                    th:last-child {
+                        padding-right: 12px;
+                    }
+                    th:nth-child(7) {
+                        width: 140px;
+                    }
+                }
+                .order-table-row {
+                    color: @orderTextColor;
+                    line-height: 1.57;
+                    td:first-child {
+                        padding-left: 52px;
+                        width: 18px;
+                        input {
+                            display: none;
+                        }
+                        .control {
+                            padding-left: 42px;
+                        }
+                    }
+                    td:last-child {
+                        padding-right: 12px;
+                    }
+                    td:nth-child(7) {
+                        width: 140px;
+                    }
+
+                    .row-element {
+                        height: 48px;
+                        padding-top: 14px;
+                        .fa {
+                            cursor: pointer;
+                        }
+                    }
+                    .print-label {
+                        font-size: 12px;
+                        font-weight: 600;
+                        letter-spacing: 0.9px;
+                        color: @orderOrangeColor;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                    }
+                }
+                .highlight-row {
+                    background-color: @orderTableYellowBackgroundColor;
+                }
+            }
+        }
+    }
+}

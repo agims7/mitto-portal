@@ -1,0 +1,55 @@
+<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+<div class="register-container">
+  <div class="left-container-static">
+    <div class="padding-container">
+      <h1 class="title-register">Zarejestruj</h1>
+      <p *ngIf="email.invalid && email.touched || name.invalid && name.touched || surname.invalid && surname.touched || streetandnumber.invalid && streetandnumber.touched || postalcode.invalid && postalcode.touched || city.invalid && city.touched" class="invalid-form absolut-alert">Zaznaczone pola formularza zawierają błędy. Popraw je, aby kontynuować.</p>
+      <div class="register-form">
+        <div [ngClass]="{ 'registration-content-hidden': registrationFinished }" class="register-form-container">          
+          <input type="email" class="input-standard-full-width" id="email" name="email" [(ngModel)]="emailAddress" #email="ngModel" placeholder="Email" required email>
+
+          <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" class="input-standard-half-width-first" id="name" name="name" [(ngModel)]="userName" #name="ngModel" placeholder="Imię" required>
+
+          <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" class="input-standard-half-width-second" id="surname" name="surname" [(ngModel)]="userSurname" #surname="ngModel" placeholder="Nazwisko" required>
+
+          <input type="text" class="input-standard-full-width" id="streetandnumber" required name="streetandnumber" [(ngModel)]="streetAndNumber" #streetandnumber="ngModel" placeholder="Ulica i numer" required>
+
+          <input type="text" class="input-code" id="postalcode" name="postalcode" [(ngModel)]="postalCode" #postalcode="ngModel" placeholder="Kod" required>
+
+          <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" class="input-city" id="city" name="city" [(ngModel)]="cityName" #city="ngModel" placeholder="Miasto" required>
+
+          <p class="company-paragraph">Poniżej wypełnij, gdy rejestrujesz się jako firma.</p>
+
+          <input type="text" class="input-company" id="company" name="company" [(ngModel)]="companyName" #company="ngModel"  placeholder="Firma">
+
+          <input type="numer" class="input-nip" pattern="[0-9]*" minlength="10" maxlength="10" id="nip" name="nip" [(ngModel)]="nipNumber" #nip="ngModel" placeholder="NIP">
+
+          <div class="statute-section">
+            <input type="checkbox" class="statute-rectangle" name="statute"  id="statute" required [(ngModel)]="regulationsAcceptance" #statute="ngModel" />
+            <div class="label-section">
+              <label for="statute" class="statute-text">Zgadzam się na przetwarzanie moich danych osobowych oraz akceptuję <a href="" class="statute-link">regulamin serwisu</a> Mitto+</label>
+            </div>
+          </div>
+        </div>
+
+        <div [ngClass]="{ 'registration-content-hidden': !registrationFinished }" class="register-form-finished">
+          <p class="paragraph-first">Dziękujemy za rejestrację w naszej aplikacji.</p>
+          <p class="paragraph-second">Wysłaliśmy na podany przez Ciebie adres <span class="email-bold">wrzalik@gmail.com</span> wiadomość, w której prosimy o potwierdzenie adresu email.</p>
+          <p class="paragraph-third">Dopiero po potwierdzeniu możliwe będzie zalogowanie do aplikacji.</p>
+        </div>
+
+        <div class="buttons-container">
+          <button class="button button-transparent" [routerLink]="['/login']">Zaloguj</button>
+          <button *ngIf="!registrationFinished" type="submit" [disabled]="!registerForm.form.valid" class="button button-normal">Zarejestruj</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="right-container-static">
+    <img src="../assets/img/background-welcome.svg" alt="Background image">
+  </div>
+</div>
+</form>

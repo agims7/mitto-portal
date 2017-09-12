@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="17px" viewBox="0 0 20 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>7C3590BE-3404-4CD0-8F69-888D67765F1B</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M6,4 L22,4 L22,6 L6,6 L6,4 Z M6,9 L22,9 L22,11 L6,11 L6,9 Z M6,14 L22,14 L22,16 L6,16 L6,14 Z M6,19 L22,19 L22,21 L6,21 L6,19 Z M2,4 L4,4 L4,6 L2,6 L2,4 Z M2,14 L4,14 L4,16 L2,16 L2,14 Z M2,9 L4,9 L4,11 L2,11 L2,9 Z M2,19 L4,19 L4,21 L2,21 L2,19 Z" id="path-1"></path>
+    </defs>
+    <g id="Components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Menu-Icons" transform="translate(-110.000000, -16.000000)">
+            <g id="-g-Icon-/-Cart-Copy" transform="translate(108.000000, 12.000000)">
+                <rect id="Rectangle-7" fill-opacity="0" fill="#000000" transform="translate(12.000000, 12.000000) scale(-1, 1) translate(-12.000000, -12.000000) " x="0" y="0" width="24" height="24"></rect>
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Rectangle-2-Copy-5" fill="#FFFFFF" xlink:href="#path-1"></use>
+                <g id="Icon-State-/-Gray" mask="url(#mask-2)" fill="#000000" fill-opacity="0.5">
+                    <rect id="Rectangle-13" x="0" y="0" width="24" height="24"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
