@@ -1,4 +1,4 @@
 # Mitto+ portal
 ##### www.portal.mittoplus.pl
 
-##### Still in progress
+##### Still in progress (just Front-end now)
